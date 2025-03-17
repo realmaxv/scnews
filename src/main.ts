@@ -6,14 +6,20 @@ const userInputSearch = document.getElementById(
   "input-text"
 ) as HTMLInputElement;
 
-const outputDiv = document.querySelector<HTMLDivElement>(".output")!;
+const outputDiv = document.querySelector<HTMLDivElement>(".output");
+const inputLanguage = document.querySelector("#input-sprache") as HTMLSelectElement;
+const inputSort = document.querySelector("#input-sort") as HTMLSelectElement; 
+const submitBtn = document.querySelector("#search-btn") as HTMLButtonElement;
+
+
+
 let userValue = userInputSearch.value;
 type NewsInput = {
   articles: string[];
 };
 
-function userSearch(input: string) {
-  const searchLinkAPI = `https://newsapi.org/v2/everything?q=${input}&apiKey=${apiKey}`;
+function userSearch(input: string, inputUserLang: string) {
+  const searchLinkAPI = `https://newsapi.org/v2/everything?q=${input}&apiKey=${apiKey}&language=${inputUserLang}`;
 
   fetch(searchLinkAPI)
     .then((response) => response.json())
@@ -33,9 +39,47 @@ function userSearch(input: string) {
         articleBtn.href = element.url;
 
         newArticle.append(newHeadline, description, image, articleBtn);
-        outputDiv.appendChild(newArticle);
+        if (outputDiv) {
+            outputDiv.appendChild(newArticle);
+        }
       });
     });
 }
 
-userSearch("katze");
+userSearch();
+
+inputLanguage.addEventListener("change", (input) => {
+    if(outputDiv){
+     outputDiv.innerHTML = "";
+    }
+    switch(inputLanguage.value) {
+        case "de": userSearch(input, "de")
+        break;
+        case "en": userSearch(input, "en")
+        break;
+        case "es": userSearch(input, "es")
+        break;
+        case "fr": userSearch(input, "fr")
+        break;
+        case "it": userSearch(input, "it")
+        break;
+        case "ru": userSearch(input, "ru")
+        break;
+        case "ar": userSearch(input, "ar")
+        break;
+        case "he": userSearch(input, "he")
+        break;
+        case "nl": userSearch(input, "nl")
+        break;
+        case "no": userSearch(input, "no")
+        break;
+        case "sv": userSearch(input, "sv")
+        break;
+        case "pt": userSearch(input, "pt")
+        break;
+        case "chn": userSearch(input, "chn")
+        break;
+        default:
+    }
+    }
+);
