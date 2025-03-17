@@ -7,6 +7,49 @@
     <title>News</title>
   </head>
   <body>
+    <main>
+      <h1> NEWS APP</h1>
+      <section class="news-box">
+        <form>
+          <div>
+            <label for="input-text">Suchbergriff</label>
+            <input type="text" name="input-text" id="input-text" placeholder="Gib deine Suche ein...">
+          </div>
+          <div>
+            <label for="input-sprache">Sprache</label>
+            <select name="input-sprache" id="input-sprache">
+              <option value="de">Deutsch</option>
+              <option value="en">Englisch</option>
+              <option value="es">Spanisch</option>
+              <option value="fr">Französich</option>
+              <option value="it">Italienisch</option>
+              <option value="ru">Russisch</option>
+              <option value="ar">Arabisch</option>
+              <option value="he">Hebräisch</option>
+              <option value="nl">Niederländisch</option>
+              <option value="no">Norwegisch</option>
+              <option value="sw">Schwedisch</option>
+              <option value="po">Portogisich</option>
+              <option value="ch">Chinesisch</option>
+            </select>
+            </div>
+            <div>
+              <label for="input-sort">Sortieren nach</label>
+              <select name="input-sort" id="input-sort">
+                <option value="relevanz">Relevanz</option>
+                <option value="popularität">Popularität</option>
+                <option value="neueste_zuerst">Neueste zuerst</option>    
+                </select>     
+              </div>
+              <button type="submit">Suchen</button>
+            </div>
+        </form>
+      </section>
+      <div class="output"></div>
+    </main>
+
+
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
