@@ -7,7 +7,7 @@ const userInputSearch = document.getElementById(
 ) as HTMLInputElement;
 
 const outputDiv = document.querySelector<HTMLDivElement>(".output")!;
-
+let userValue = userInputSearch.value;
 type NewsInput = {
   articles: string[];
 };
@@ -38,4 +38,4 @@ function userSearch(input: string) {
     });
 }
 
-userSearch("dog");
+userSearch("katze");
