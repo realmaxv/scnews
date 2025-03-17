@@ -19,7 +19,12 @@ function userSearch(input: string, inputUserLang: string, sort: string) {
     fetch(searchLinkAPI)
         .then((response) => response.json())
         .then((data) => {
+            if (data.articles.length === 0) { 
+                window.alert("Keine Ergebnisse zu diesem Suchbegriff gefunden!");
+                return;
+            } else {
             data.articles.forEach((element: Article) => {
+                
                 const newArticle = document.createElement("div");
                 newArticle.className = "single-article";
                 const newHeadline = document.createElement("h3");
@@ -37,7 +42,7 @@ function userSearch(input: string, inputUserLang: string, sort: string) {
                 if (outputDiv) {
                     outputDiv.appendChild(newArticle);
                 }
-            });
+            });}
         })
         .catch((error) => console.log(error));
 }
@@ -46,8 +51,8 @@ submitBtn.addEventListener("click", () => {
         outputDiv.innerHTML = "";
     }
 
-    if (userInputSearch.value === "" || userInputSearch === null) {
-        window.alert("Kein Suchbefehl eingegeben. Bitte eingeben!");
+    if (userInputSearch.value === "") {
+        window.alert("Kein Suchbegriff eingegeben. Bitte eingeben!");
     } else {
         userSearch(userInputSearch.value, inputLanguage.value, inputSort.value);
     }
